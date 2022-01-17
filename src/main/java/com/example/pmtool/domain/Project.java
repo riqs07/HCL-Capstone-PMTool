@@ -10,9 +10,6 @@ import java.util.Date;
 @Entity
 public class Project {
 
-
-    /// Because of created at auto insert. API will take bad info
-
     @Id
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
     private int id;
