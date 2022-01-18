@@ -6,8 +6,6 @@ import com.example.pmtool.repositories.ProjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Locale;
-
 @Service
 public class ProjectService {
 
@@ -39,11 +37,22 @@ public class ProjectService {
 
 
     public Iterable<Project> findAllProjects(){
-
-
-
         return repo.findAll();
     };
+
+    public void deleteProjectbyUUID(String projectUUID){
+
+        Project p = repo.findByProjectUUID(projectUUID.toUpperCase());
+
+        if (p == null){
+            throw new ProjectUUIDException("Can not Delete project " + projectUUID + " it does not exist.");
+
+        }
+
+        repo.delete(p);
+    }
+
+
 
 }
 

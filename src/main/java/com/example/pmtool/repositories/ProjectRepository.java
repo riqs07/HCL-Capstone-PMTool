@@ -15,7 +15,6 @@ public interface ProjectRepository extends CrudRepository<Project,Integer> {
 
 
     Project findByProjectUUID(String projectUUID);
-    Project deleteByProjectUUID(String projectUUID);
 
     @Override
     Iterable<Project> findAll();
