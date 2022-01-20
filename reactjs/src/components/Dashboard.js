@@ -1,5 +1,6 @@
 import React from 'react'
 import ProjectItem from './Project/ProjectItem'
+import CreateProjectBtn from './Project/CreateProjectBtn'
 
 
 export default function Dashboard() {
@@ -11,9 +12,7 @@ export default function Dashboard() {
             <div className="col-md-12">
                 <h1 className="display-4 text-center">Projects</h1>
                 <br />
-                <a href="ProjectForm.html" className="btn btn-lg btn-info">
-                    Create a Project
-                </a>
+                <CreateProjectBtn/>
                 <br />
                 <hr />
                 <ProjectItem/>
