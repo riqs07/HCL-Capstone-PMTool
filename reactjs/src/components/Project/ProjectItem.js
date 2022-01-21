@@ -2,9 +2,9 @@ import React from 'react'
 
 export default function ProjectItem() {
     return (
-                <div className="container">
-                    <div className="card card-body bg-light mb-3">
-                        <div className="row">
+                <div className="container ">
+                    <div className="px-6 py-4 rounded">
+                        <div className="row ">
                             <div className="col-2">
                                 <span className="mx-auto">REACT</span>
                             </div>
@@ -12,8 +12,8 @@ export default function ProjectItem() {
                                 <h3>Spring / React Project</h3>
                                 <p>Project to create a Kanban Board with Spring Boot and React</p>
                             </div>
-                            <div className="col-md-4 d-none d-lg-block">
-                                <ul className="list-group">
+                            <div className=" col-md-4 d-none d-lg-block">
+                                <ul className="list-group" >
                                     <a href="#">
                                         <li className="list-group-item board">
                                             <i className="fa fa-flag-checkered pr-1"> Project Board </i>

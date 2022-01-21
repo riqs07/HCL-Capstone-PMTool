@@ -2,10 +2,10 @@ import React from 'react'
 
 export default function Header() {
     return (
-        <nav className="navbar navbar-expand-sm navbar-dark bg-primary mb-4">
+        <nav className="navbar navbar-expand-sm navbar-dark bg-slate-500 mb-4">
         <div className="container">
             <a className="navbar-brand" href="Dashboard.html">
-                Personal Project Management Tool
+            <i class="fas fa-american-sign-language-interpreting"></i> Helping Hand
             </a>
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#mobile-nav">
                 <span className="navbar-toggler-icon" />
