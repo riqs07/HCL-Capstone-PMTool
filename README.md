@@ -17,16 +17,15 @@ Full stack Project management tool
 ## Built With
 
 - [React](https://reactjs.org/) - A JavaScript library for building user interfaces 👗
-- [Node](https://nodejs.org/en/) - JavaScript runtime environment 🧠
+- [Java](https://www.java.com/en/) Class-based, object-oriented programming language
 - [mySQL](https://www.mysql.com/) - Relational database management system.  📦
-
 ## Features
 
 
 
 ## Other Tech that helped me along the way
-- [Styled Components](https://styled-components.com/) - Styling Custom CSS-in-JS 💅🏽
 - [Bootstrap](https://getbootstrap.com/)
+- [Tailwind](https://tailwindcss.com/) 
 - [Postman](https://www.postman.com/)  Testing API
 - [Spring JPA](https://sequelize.org/)  ORM Tool for mySQL & Java
 - [Spring MVC](https://spring.io/) - Spring web MVC 🎮

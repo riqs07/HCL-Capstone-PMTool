@@ -1,79 +1,83 @@
 import React, { useState } from 'react'
+import PropTypes from "prop-types"
+import {connect} from "react-redux"
+import {createProject} from "../../repository/projectActions"
+import { useNavigate } from 'react-router-dom'
 
 
+const AddProject = ({createProject,history}) => {
 
-const AddProject = () => {
+  let nav = useNavigate()
 
-
-    const [name, setName] = useState();
-    const [projectUUID, setUUID] = useState();
-    const [description, setDesc] = useState();
-    const [start_date, setStartDate] = useState();
-    const [end_date, setEndDate] = useState();
+    const [projectName, setName] = useState("");
+    const [projectUUID, setUUID] = useState("");
+    const [description, setDesc] = useState("");
+    const [start_date, setStartDate] = useState("");
+    const [end_date, setEndDate] = useState("");
 
     const onSubmit = (e) => {
         e.preventDefault();
-        const request =  {name,
+
+        const requestBody =  {projectName,
                          projectUUID,
                          description,
                          start_date,
                          end_date }
 
     
-        
-        console.log(request);
-      
+          createProject(requestBody,nav)
+                         
     }
 
     return (
 
-<div class="w-full max-w-xs">
-  <form class="bg-slate-700 shadow-md rounded px-8 pt-6 pb-8 mb-4" onSubmit = {onSubmit}>
-    <div class="mb-4">
-      <label class="block text-slate-200 text-sm font-bold mb-2" for="projectName">
+<div className="w-full max-w-xs">
+  <form className="bg-slate-700 shadow-md rounded px-8 pt-6 pb-8 mb-4" onSubmit = {onSubmit}>
+    <div className="mb-4">
+      <label className="block text-slate-200 text-sm font-bold mb-2" htmlFor="projectName">
         Project Name
       </label>
-      <input class=" appearance-none border rounded w-full py-2 px-3 text-slate-200 leading-tight focus:outline-none focus:shadow-outline" id="projectName" type="text" placeholder = "Enter Project Name" value = {name} onChange = {(e) => setName(e.target.value)} />
+      <input className=" appearance-none border rounded w-full py-2 px-3 text-slate-200 leading-tight focus:outline-none focus:shadow-outline" id="projectName" type="text" placeholder = "Enter Project Name" value = {projectName} onChange = {(e) => setName(e.target.value)} />
     </div>
 
-    <div class="mb-6">
-      <label class="block text-slate-200 text-sm font-bold mb-2" for="password">
+    <div className="mb-6">
+      <label className="block text-slate-200 text-sm font-bold mb-2" htmlFor="password">
         Project Identifier 
       </label>
-      <input class=" bg-slate-700 appearance-none border border-red-500 rounded w-full py-2 px-3 text-slate-200 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="projectUUID" type="text" placeholder  = "Between 4-5 charecters"  value = {projectUUID} onChange = {(e) => setUUID(e.target.value)}/>
+      <input className=" bg-slate-700 appearance-none border border-red-500 rounded w-full py-2 px-3 text-slate-200 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="projectUUID" type="text" placeholder  = "Between 4-5 charecters"  value = {projectUUID} onChange = {(e) => setUUID(e.target.value)}/>
     </div>
 
-     <div class="mb-4">
-      <label class="block text-slate-200 text-sm font-bold mb-2" for="username">
+     <div className="mb-4">
+      <label className="block text-slate-200 text-sm font-bold mb-2" htmlFor="username">
         Project Desciription.
       </label>
-      <textarea class=" bg-slate-700 appearance-none border rounded w-full py-2 px-3 text-slate-200 leading-tight focus:outline-none focus:shadow-outline" id="description" placeholder="Enter project details" value = {description} onChange = {(e) => setDesc(e.target.value)}/>
+      <textarea className=" bg-slate-700 appearance-none border rounded w-full py-2 px-3 text-slate-200 leading-tight focus:outline-none focus:shadow-outline" id="description" placeholder="Enter project details" value = {description} onChange = {(e) => setDesc(e.target.value)}/>
     </div>
 
-<div class="flex items-center justify-center">
-  <div class="datepicker relative form-floating mb-3 xl:w-96">
+<div className="flex items-center justify-center">
+  <div className="datepicker relative form-floating mb-3 xl:w-96">
     <input type="date"
-      class="bg-slate-700 form-control block w-full px-3 py-1.5 text-base font-normal text-slate-200 bg-white bg-clip-padding border border-solid border-slate-200 rounded transition ease-in-out m-0 focus:text-slate-200 focus:bg-white focus:border-blue-600 focus:outline-none"
+      className="bg-slate-700 form-control block w-full px-3 py-1.5 text-base font-normal text-slate-200 bg-white bg-clip-padding border border-solid border-slate-200 rounded transition ease-in-out m-0 focus:text-slate-200 focus:bg-white focus:border-blue-600 focus:outline-none"
       placeholder="Select a date"  value = {start_date} onChange = {(e)=>setStartDate(e.target.value)}/>
-    <label for="floatingInput" class="text-slate-700">Select a Start date</label>
+    <label htmlFor="floatingInput" className="text-slate-700">Select a Start date</label>
   </div>
 </div>
 
-<div class="flex items-center justify-center">
-  <div class="datepicker relative form-floating mb-3 xl:w-96">
+<div className="flex items-center justify-center">
+  <div className="datepicker relative form-floating mb-3 xl:w-96">
     <input type="date"
-      class="form-control block w-full px-3 py-1.5 text-base font-normal text-slate-200 bg-white bg-clip-padding border border-solid border-slate-200 rounded transition ease-in-out m-0 focus:text-slate-200 focus:bg-white focus:border-blue-600 focus:outline-none"
+      className="form-control block w-full px-3 py-1.5 text-base font-normal text-slate-200 bg-white bg-clip-padding border border-solid border-slate-200 rounded transition ease-in-out m-0 focus:text-slate-200 focus:bg-white focus:border-blue-600 focus:outline-none"
       placeholder="Select a date" value = {end_date} onChange = {(e) => setEndDate(e.target.value)} />
-    <label for="floatingInput2" class="text-slate-700">Select an End date</label>
+    <label htmlFor="floatingInput2" className="text-slate-700">Select an End date</label>
   </div>
 </div>
    
 
-    <div class="flex items-center justify-between">
-      <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit" >
+    <div className="flex items-center justify-between">
+      <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit" >
         Submit
       </button>
-      <button type="button" class="inline-block px-6 py-2 border-2 border-blue-600 text-blue-600 font-medium text-xs leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out">
+      <button type="button" className="inline-block px-6 py-2 border-2 border-blue-600 text-blue-600 font-medium text-xs leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out">
         Clear 
       </button>
     </div>
@@ -119,4 +123,8 @@ const AddProject = () => {
     )
 }
 
-export default AddProject
+AddProject.propTypes = {
+  createProject :PropTypes.func.isRequired
+}
+
+export default connect(null,{createProject}) (AddProject)
