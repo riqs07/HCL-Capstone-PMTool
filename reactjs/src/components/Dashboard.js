@@ -1,9 +1,24 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import ProjectItem from './Project/ProjectItem'
 import CreateProjectBtn from './Project/CreateProjectBtn'
+import { connect } from "react-redux"
+import { getProjects } from "../repository/projectActions"
+import PropTypes from "prop-types"
 
 
-export default function Dashboard() {
+
+
+const Dashboard = ({project, getProjects}) => {
+
+
+
+    /// Empty Array Means it will only run once at mounting
+    // == componentWillMount
+    useEffect(() => {
+        getProjects();
+
+        },[])
+
     return (
        
     <div className="projects">
@@ -24,3 +39,18 @@ export default function Dashboard() {
 
     )
 }
+
+
+Dashboard.propTypes = {
+    project:PropTypes.object.isRequired,
+    getProjects:PropTypes.func.isRequired,
+  }
+  
+
+// Access global store
+const mapStateToProps = state => ({
+    project:state.project
+  })
+  
+
+export default connect(null,{getProjects})(Dashboard)

@@ -5,6 +5,8 @@ import {createProject} from "../../repository/projectActions"
 import { useNavigate } from 'react-router-dom'
 
 
+
+
 const AddProject = ({createProject,errors}) => {
 
     let nav = useNavigate()
@@ -34,6 +36,7 @@ const AddProject = ({createProject,errors}) => {
 
     // Every Time Errors Object updates AKA when server gives response 
     // Insert The response into error object on front end 
+    // == componentWillUpdate
 
     useEffect(() => {
       if(errors){
