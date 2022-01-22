@@ -5,7 +5,7 @@ import Header from './components/Layout/Header'
 import AddProject from './components/Project/AddProject'
 import "bootstrap/dist/css/bootstrap.min.css"
 
-import { BrowserRouter as Router, Routes, Route , useNavigate } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
 import { Provider } from "react-redux"
 import store from "./store"

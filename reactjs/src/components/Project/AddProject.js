@@ -1,20 +1,22 @@
-import React, { useState } from 'react'
+import React, { useState ,useEffect } from 'react'
 import PropTypes from "prop-types"
 import {connect} from "react-redux"
 import {createProject} from "../../repository/projectActions"
 import { useNavigate } from 'react-router-dom'
 
 
-const AddProject = ({createProject,history}) => {
+const AddProject = ({createProject,errors}) => {
 
-  let nav = useNavigate()
+    let nav = useNavigate()
 
     const [projectName, setName] = useState("");
     const [projectUUID, setUUID] = useState("");
     const [description, setDesc] = useState("");
     const [start_date, setStartDate] = useState("");
     const [end_date, setEndDate] = useState("");
+    const [responseErrors, setErrors] = useState()
 
+    /// Prepares and Sends Object to Repository Layer 
     const onSubmit = (e) => {
         e.preventDefault();
 
@@ -29,9 +31,21 @@ const AddProject = ({createProject,history}) => {
                          
     }
 
+
+    useEffect(() => {
+      if(errors){
+        console.log(errors)
+        setErrors(errors)
+      }
+    })
+
+
     return (
 
+
 <div className="w-full max-w-xs">
+<h1>{errors}</h1>
+
   <form className="bg-slate-700 shadow-md rounded px-8 pt-6 pb-8 mb-4" onSubmit = {onSubmit}>
     <div className="mb-4">
       <label className="block text-slate-200 text-sm font-bold mb-2" htmlFor="projectName">
@@ -124,7 +138,13 @@ const AddProject = ({createProject,history}) => {
 }
 
 AddProject.propTypes = {
-  createProject :PropTypes.func.isRequired
+  createProject:PropTypes.func.isRequired,
+  errors:PropTypes.object.isRequired
 }
 
-export default connect(null,{createProject}) (AddProject)
+
+const mapStateToProps = state => ({
+  errors:state.errors
+})
+
+export default connect(mapStateToProps,{createProject}) (AddProject)
