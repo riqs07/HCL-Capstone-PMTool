@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom'
 
 const AddProject = ({createProject,errors}) => {
 
-    let nav = useNavigate()
+  const nav = useNavigate()
 
     const [projectName, setName] = useState("");
     const [projectUUID, setUUID] = useState("");

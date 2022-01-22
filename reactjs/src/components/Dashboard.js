@@ -10,11 +10,6 @@ import PropTypes from "prop-types"
 
 const Dashboard = ({ project,getProjects}) => {
 
-    const test = {
-        projectName:"ProjectName",
-        projectUUID:"Prop",
-        description:"desc"
-    }
 
     /// Empty Array Means it will only run once at mounting
     // == componentWillMount
@@ -25,7 +20,6 @@ const Dashboard = ({ project,getProjects}) => {
 
 
         const {projects} = project;
-        console.log(projects) 
 
     return (
        

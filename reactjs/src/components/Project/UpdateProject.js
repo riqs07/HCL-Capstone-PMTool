@@ -1,6 +1,26 @@
-import React from 'react'
+import React ,{useEffect} from 'react'
+import { useNavigate } from 'react-router-dom'
+import PropTypes from "prop-types"
+import {connect} from "react-redux"
+import {getProject} from "../../repository/projectActions"
+import { useParams } from 'react-router';
 
-export default function UpdateProject() {
+
+const UpdateProject = ({getProject}) => {
+
+
+  
+    const nav = useNavigate()
+    const {id} = useParams()
+
+    console.log(id)
+    // componentDidMount
+    useEffect(() => {
+        getProject(id,nav);
+
+        },[])
+
+
     return (
         <div className="project">
         <div className="container">
@@ -37,4 +57,19 @@ export default function UpdateProject() {
         </div>
     </div>
     )
+
+
+      
 }
+
+UpdateProject.propTypes = {
+    getProject:PropTypes.func.isRequired,
+    project:PropTypes.object.isRequired
+  }
+  
+  
+//   const mapStateToProps = state => ({
+//     project:state.project.project
+//   })
+  
+  export default connect(null,{getProject}) (UpdateProject)

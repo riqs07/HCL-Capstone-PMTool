@@ -1,5 +1,5 @@
 import axios from "axios"
-import { GET_ERRORS , GET_PROJECTS} from "./types"
+import { GET_ERRORS , GET_PROJECTS,GET_PROJECT} from "./types"
 
 
 /// POST PROJECT 
@@ -19,10 +19,18 @@ export const createProject = (project, nav) => async dispatch => {
 }
 
 export const getProjects = () => async dispatch => {
-    console.log("ok")
     const res = await axios.get("http://localhost:8080/api/project/all")
     dispatch({
         type: GET_PROJECTS,
+        payload: res.data
+    })
+}
+
+export const getProject = (id,nav) => async dispatch => {
+
+    const res = await axios.get(`http://localhost:8080/api/project/${id}`)
+    dispatch({
+        type: GET_PROJECT,
         payload: res.data
     })
 }

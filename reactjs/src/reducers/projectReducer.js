@@ -1,4 +1,4 @@
-import {GET_PROJECTS} from '../repository/types';
+import {GET_PROJECTS, GET_PROJECT} from '../repository/types';
 
 
 
@@ -14,6 +14,12 @@ export default (state = initialState,action) => {
         return {
             ...state,
             projects:action.payload
+        }
+
+        case GET_PROJECT:
+        return {
+            ...state,
+            project:action.payload
         }
 
         default:
