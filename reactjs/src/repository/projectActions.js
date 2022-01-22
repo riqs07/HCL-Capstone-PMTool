@@ -19,6 +19,7 @@ export const createProject = (project, nav) => async dispatch => {
 }
 
 export const getProjects = () => async dispatch => {
+    console.log("ok")
     const res = await axios.get("http://localhost:8080/api/project/all")
     dispatch({
         type: GET_PROJECTS,

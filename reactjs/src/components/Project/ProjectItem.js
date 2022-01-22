@@ -1,16 +1,18 @@
 import React from 'react'
 
-export default function ProjectItem() {
+const ProjectItem = ({project}) => {
+    const {projectName, projectUUID,description} = project
+
     return (
                 <div className="container ">
                     <div className="px-6 py-4 rounded">
                         <div className="row ">
                             <div className="col-2">
-                                <span className="mx-auto">REACT</span>
+                                <span className="mx-auto">{projectUUID}</span>
                             </div>
                             <div className="col-lg-6 col-md-4 col-8">
-                                <h3>Spring / React Project</h3>
-                                <p>Project to create a Kanban Board with Spring Boot and React</p>
+                                <h3>{projectName}</h3>
+                                <p>{description}</p>
                             </div>
                             <div className=" col-md-4 d-none d-lg-block">
                                 <ul className="list-group" >
@@ -36,3 +38,5 @@ export default function ProjectItem() {
                 </div>
     )
 }
+
+export default ProjectItem

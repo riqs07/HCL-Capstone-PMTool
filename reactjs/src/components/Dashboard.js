@@ -8,9 +8,13 @@ import PropTypes from "prop-types"
 
 
 
-const Dashboard = ({project, getProjects}) => {
+const Dashboard = ({ project,getProjects}) => {
 
-
+    const test = {
+        projectName:"ProjectName",
+        projectUUID:"Prop",
+        description:"desc"
+    }
 
     /// Empty Array Means it will only run once at mounting
     // == componentWillMount
@@ -18,6 +22,10 @@ const Dashboard = ({project, getProjects}) => {
         getProjects();
 
         },[])
+
+
+        const {projects} = project;
+        console.log(projects) 
 
     return (
        
@@ -30,7 +38,11 @@ const Dashboard = ({project, getProjects}) => {
                 <CreateProjectBtn/>
                 <br />
                 <hr />
-                <ProjectItem/>
+                
+
+                {projects.map(p => (
+                    <ProjectItem key = {p.id} project = {p}/>
+                ))}
 
             </div>
         </div>
@@ -53,4 +65,4 @@ const mapStateToProps = state => ({
   })
   
 
-export default connect(null,{getProjects})(Dashboard)
+export default connect(mapStateToProps,{getProjects})(Dashboard)
