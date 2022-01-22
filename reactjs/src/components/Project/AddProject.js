@@ -32,41 +32,84 @@ const AddProject = ({createProject,errors}) => {
     }
 
 
+    // Every Time Errors Object updates AKA when server gives response 
+    // Insert The response into error object on front end 
+
     useEffect(() => {
       if(errors){
-        console.log(errors)
         setErrors(errors)
       }
-    })
+    },[errors])
 
 
     return (
 
 
 <div className="w-full max-w-xs">
-<h1>{errors}</h1>
 
   <form className="bg-slate-700 shadow-md rounded px-8 pt-6 pb-8 mb-4" onSubmit = {onSubmit}>
     <div className="mb-4">
       <label className="block text-slate-200 text-sm font-bold mb-2" htmlFor="projectName">
         Project Name
       </label>
-      <input className=" appearance-none border rounded w-full py-2 px-3 text-slate-200 leading-tight focus:outline-none focus:shadow-outline" id="projectName" type="text" placeholder = "Enter Project Name" value = {projectName} onChange = {(e) => setName(e.target.value)} />
+      {errors.projectName 
+         ?
+         <>
+      <input className=" appearance-none border-2 border-red-500 rounded w-full py-2 px-3 text-slate-200 leading-tight focus:outline-none focus:shadow-outline" id="projectName" type="text" placeholder = "Enter Project Name" value = {projectName} onChange = {(e) => setName(e.target.value)} />
+          <a class="inline-block align-baseline font-bold text-sm text-red-500 hover:text-red-800" href="#">
+          Please enter a valid Project Name.
+          </a>
+          </>
+  
+  :
+  <input className=" appearance-none border-2 focus:border-blue-500 rounded w-full py-2 px-3 text-slate-200 leading-tight focus:outline-none focus:shadow-outline" id="projectName" type="text" placeholder = "Enter Project Name" value = {projectName} onChange = {(e) => setName(e.target.value)} />
+}
+
+
     </div>
 
     <div className="mb-6">
       <label className="block text-slate-200 text-sm font-bold mb-2" htmlFor="password">
         Project Identifier 
       </label>
-      <input className=" bg-slate-700 appearance-none border border-red-500 rounded w-full py-2 px-3 text-slate-200 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="projectUUID" type="text" placeholder  = "Between 4-5 charecters"  value = {projectUUID} onChange = {(e) => setUUID(e.target.value)}/>
+      {errors.projectUUID 
+         ?
+         <>
+      <input className=" bg-slate-700 appearance-none border-2 border-red-500 rounded w-full py-2 px-3 text-slate-200 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="projectUUID" type="text" placeholder  = "Between 4-5 charecters"  value = {projectUUID} onChange = {(e) => setUUID(e.target.value)}/>
+          <a class="inline-block align-baseline font-bold text-sm text-red-500 hover:text-red-800" href="#">
+          Please enter a valid Project Identifier.
+          </a>
+          </>
+  
+  :
+  <input className=" bg-slate-700 appearance-none border-2 focus:border-blue-500 rounded w-full py-2 px-3 text-slate-200 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="projectUUID" type="text" placeholder  = "Between 4-5 charecters"  value = {projectUUID} onChange = {(e) => setUUID(e.target.value)}/>
+}
     </div>
 
-     <div className="mb-4">
-      <label className="block text-slate-200 text-sm font-bold mb-2" htmlFor="username">
-        Project Desciription.
-      </label>
-      <textarea className=" bg-slate-700 appearance-none border rounded w-full py-2 px-3 text-slate-200 leading-tight focus:outline-none focus:shadow-outline" id="description" placeholder="Enter project details" value = {description} onChange = {(e) => setDesc(e.target.value)}/>
-    </div>
+
+
+    <div className="mb-4">
+    <label className="block text-slate-200 text-sm font-bold mb-2" htmlFor="username">
+    Project Desciription
+    </label>
+    {errors.description 
+         ?
+         <>
+         <textarea className="bg-slate-700 appearance-none border-2 border-red-500 rounded w-full py-2 px-3 text-slate-200 leading-tight focus:shadow-outline" id="description" placeholder="Enter project details" value = {description} onChange = {(e) => setDesc(e.target.value)}/>
+          <a class="inline-block align-baseline font-bold text-sm text-red-500 hover:text-red-800" href="#">
+          Please enter a description.
+          </a>
+          </>
+  
+  :
+  <textarea className=" bg-slate-700 appearance-none border-2 focus:border-blue-500 rounded w-full py-2 px-3 text-slate-200 leading-tight focus:outline-none focus:shadow-outline" id="description" placeholder="Enter project details" value = {description} onChange = {(e) => setDesc(e.target.value)}/>
+  }
+
+      </div>
+
+  
+  
+     
 
 <div className="flex items-center justify-center">
   <div className="datepicker relative form-floating mb-3 xl:w-96">
