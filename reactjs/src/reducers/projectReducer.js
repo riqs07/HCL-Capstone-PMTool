@@ -1,4 +1,4 @@
-import {GET_PROJECTS, GET_PROJECT} from '../repository/types';
+import {GET_PROJECTS, GET_PROJECT,DELETE_PROJECT} from '../repository/types';
 
 
 
@@ -20,6 +20,14 @@ export default (state = initialState,action) => {
         return {
             ...state,
             project:action.payload
+        }
+
+
+
+        case DELETE_PROJECT:
+        return {
+            ...state,
+            projects:state.projects.filter(project => project.projectUUID !== action.payload)
         }
 
         default:

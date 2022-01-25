@@ -1,13 +1,10 @@
 import axios from "axios"
-import { GET_ERRORS , GET_PROJECTS,GET_PROJECT,UPDATE_PROJECT} from "./types"
+import { GET_ERRORS , GET_PROJECTS,GET_PROJECT,UPDATE_PROJECT,DELETE_PROJECT} from "./types"
 
 
 /// POST PROJECT 
 export const createProject = (project, nav) => async dispatch => {
-
-
     try {
-        
         const res = await axios.post("http://localhost:8080/api/project", project)
         nav("/dashboard")
      
@@ -19,10 +16,8 @@ export const createProject = (project, nav) => async dispatch => {
     }
 }
 
-
+/// PUT Project
 export const updateProject = (project, nav) => async dispatch => {
-
-
     try {
         
         const res = await axios.put("http://localhost:8080/api/project", project)
@@ -39,6 +34,7 @@ export const updateProject = (project, nav) => async dispatch => {
     }
 }
 
+// GET ALL PROJECTS
 export const getProjects = () => async dispatch => {
     const res = await axios.get("http://localhost:8080/api/project/all")
     dispatch({
@@ -47,12 +43,9 @@ export const getProjects = () => async dispatch => {
     })
 }
 
+// GET ONE PROJECT
 export const getProject = (id,nav) => async dispatch => {
-
-
     try {
-        
-
     const res = await axios.get(`http://localhost:8080/api/project/${id}`)
     dispatch({
         type: GET_PROJECT,
@@ -65,6 +58,18 @@ export const getProject = (id,nav) => async dispatch => {
         })
         nav("/dashboard")
     }
+}
+
+// DELETE PROJECT
+export const deleteProject = (id) => async dispatch => {
+
+
+    await axios.delete(`http://localhost:8080/api/project/${id}`)
+    dispatch({
+        type: DELETE_PROJECT,
+        payload: id
+    })
 
   
 }
+

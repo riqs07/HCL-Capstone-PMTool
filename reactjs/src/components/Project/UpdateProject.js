@@ -173,42 +173,6 @@ const UpdateProject = ({project,getProject,updateProject,errors}) => {
   </form>
   
 </div>
-
-    //     <div className="project">
-  
-    //     <div className="container">
-    //         <div className="row">
-    //             <div className="col-md-8 m-auto">
-    //                 <h5 className="display-4 text-center">Edit Project form</h5>
-    //                 <hr />
-    //                 <form onSubmit = {onSubmit} >
-    //                     <div className="form-group">
-    //                         <input type="text" className="form-control form-control-lg " value={projectName}  onChange = {(e) => setName(e.target.value)} />
-    //                     </div>
-
-    //                      <div className="form-group">
-    //                         <textarea className="form-control form-control-lg" disabled value={projectUUID} onChange = {(e) => setUUID(e.target.value)} ></textarea>
-    //                     </div>
-    //                     <div className="form-group">
-    //                         <textarea className="form-control form-control-lg" value={description} onChange = {(e) => setDesc(e.target.value)}></textarea>
-    //                     </div>
-
-                       
-    //                     <h6>Start Date</h6>
-    //                     <div className="form-group">
-    //                         <input type="date" className="form-control form-control-lg" name="start_date" value={start_date} onChange = {(e) => setStartDate(e.target.value)} />
-    //                     </div>
-    //                     <h6>Estimated End Date</h6>
-    //                     <div className="form-group">
-    //                         <input type="date" className="form-control form-control-lg" name="end_date" value={end_date} onChange = {(e) => setEndDate(e.target.value)} />
-    //                     </div> 
-
-    //                     <input type="submit" className="btn btn-primary btn-block mt-4" />
-    //                 </form>
-    //             </div>
-    //         </div>
-    //     </div>
-    // </div>
     )
 
 
