@@ -5,6 +5,7 @@ import { connect } from "react-redux"
 import { getProjects } from "../repository/projectActions"
 import PropTypes from "prop-types"
 
+import { ToastContainer } from 'react-toastify';
 
 
 
@@ -27,10 +28,8 @@ const Dashboard = ({ project,getProjects}) => {
     <div className="container">
         <div className="row">
             <div className="col-md-12">
-                <h1 className="display-4 text-center">Projects</h1>
-                <br />
-                <CreateProjectBtn/>
-                <br />
+            <CreateProjectBtn/>
+            
                 <hr />
                 
 
@@ -39,6 +38,7 @@ const Dashboard = ({ project,getProjects}) => {
                 ))}
 
             </div>
+            
         </div>
     </div>
 </div>

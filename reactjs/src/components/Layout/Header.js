@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function Header() {
     return (
-        <nav className="navbar navbar-expand-sm navbar-dark bg-slate-500 mb-4">
+        <nav className="navbar navbar-expand-sm navbar-dark bg-slate-700 mb-4 ">
         <div className="container">
             <a className="navbar-brand" href="Dashboard.html">
             <i class="fas fa-american-sign-language-interpreting"></i> Helping Hand
@@ -20,8 +20,8 @@ export default function Header() {
                     </li>
                 </ul>
 
-                <ul className="navbar-nav ml-auto">
-                    <li className="nav-item">
+                <ul className="navbar-nav ml-auto ">
+                    <li className="nav-item ">
                         <a className="nav-link " href="register.html">
                             Sign Up
                         </a>

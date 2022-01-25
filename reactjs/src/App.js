@@ -22,6 +22,8 @@ function App() {
 
         <div className="App">
           <header className="App-header">
+   
+
             <Header />
             <Routes>
               <Route  path="/dashboard" element={<Dashboard />} />
@@ -31,7 +33,7 @@ function App() {
             </Routes>
 
           </header>
-        </div>
+           </div>
       </Router>
     </Provider>
   );

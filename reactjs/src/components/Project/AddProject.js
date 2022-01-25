@@ -45,8 +45,21 @@ const AddProject = ({createProject,errors}) => {
     },[errors])
 
 
+    
+    const clearFields= () =>{
+      setName("")
+      setUUID("")
+      setDesc("")
+      setStartDate("")
+      setEndDate("")
+      
+    }
+    
+    
+    
     return (
 
+    
 
 <div className="w-full max-w-xs">
 
@@ -137,7 +150,7 @@ const AddProject = ({createProject,errors}) => {
       <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit" >
         Submit
       </button>
-      <button type="button" className="inline-block px-6 py-2 border-2 border-blue-600 text-blue-600 font-medium text-xs leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out">
+      <button type="button" onClick = {clearFields} className="inline-block px-6 py-2 border-2 border-blue-600 text-blue-600 font-medium text-xs leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out">
         Clear 
       </button>
     </div>
