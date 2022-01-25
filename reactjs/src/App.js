@@ -24,9 +24,8 @@ function App() {
           <header className="App-header">
             <Header />
             <Routes>
-              <Route exact path="/dashboard" element={<Dashboard />} />
-    
-              <Route exact path="/addProject" element={<AddProject />} />
+              <Route  path="/dashboard" element={<Dashboard />} />
+              <Route  path="/addProject" element={<AddProject />} />
               <Route path="/updateProject/:id" element={<UpdateProject />} />
 
             </Routes>
