@@ -27,7 +27,7 @@ function App() {
               <Route exact path="/dashboard" element={<Dashboard />} />
     
               <Route exact path="/addProject" element={<AddProject />} />
-              <Route exact path="/updateProject/:id" element={<UpdateProject />} />
+              <Route path="/updateProject/:id" element={<UpdateProject />} />
 
             </Routes>
 

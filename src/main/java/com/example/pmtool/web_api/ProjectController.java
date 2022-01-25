@@ -42,6 +42,21 @@ public class ProjectController {
     };
 
 
+    @PutMapping("")
+    public ResponseEntity<?> updateProject(@Valid @RequestBody Project project, BindingResult result){
+
+
+
+        ResponseEntity<?> errorMap = errorService.mapErrors(result);
+
+        if (errorMap != null) return errorMap;
+        Project p = projectService.saveOrUpdateProject(project);
+
+
+        return  new ResponseEntity<Project>(project, HttpStatus.OK);
+    };
+
+
     //not the route but just using passed in var
     // then use that var to FIND
     // spent an hour working on fix, had to do with casing

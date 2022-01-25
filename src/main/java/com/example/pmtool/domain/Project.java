@@ -20,7 +20,7 @@ public class Project {
 
     @NotBlank(message = "Project Identifier is required")
     @Size(min=4, max=5, message = "Please use 4 or 5 characters")
-    @Column(updatable = false, unique = true)
+    @Column(unique = true)
     private String projectUUID;
 
     @NotBlank(message = "A description is required.")
@@ -33,6 +33,7 @@ public class Project {
 
 
     @JsonFormat(pattern = "yyyy-mm-dd")
+    @Column(updatable = false)
     private Date created_At;
 
     @JsonFormat(pattern = "yyyy-mm-dd")
