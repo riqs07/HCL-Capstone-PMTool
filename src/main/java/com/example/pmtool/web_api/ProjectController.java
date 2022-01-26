@@ -3,7 +3,6 @@ package com.example.pmtool.web_api;
 import com.example.pmtool.domain.Project;
 import com.example.pmtool.services.ErrorValidationService;
 import com.example.pmtool.services.ProjectService;
-import com.sun.xml.bind.v2.TODO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,13 +29,12 @@ public class ProjectController {
     @PostMapping("")
     public ResponseEntity<?> createNewProject(@Valid @RequestBody Project project, BindingResult result){
 
-
-
         ResponseEntity<?> errorMap = errorService.mapErrors(result);
 
         if (errorMap != null) return errorMap;
-        Project p = projectService.saveOrUpdateProject(project);
 
+
+        Project p = projectService.saveProject(project);
 
         return  new ResponseEntity<Project>(project, HttpStatus.CREATED);
     };
@@ -45,12 +43,10 @@ public class ProjectController {
     @PutMapping("")
     public ResponseEntity<?> updateProject(@Valid @RequestBody Project project, BindingResult result){
 
-
-
         ResponseEntity<?> errorMap = errorService.mapErrors(result);
 
         if (errorMap != null) return errorMap;
-        Project p = projectService.saveOrUpdateProject(project);
+        Project p = projectService.updateProject(project);
 
 
         return  new ResponseEntity<Project>(project, HttpStatus.OK);

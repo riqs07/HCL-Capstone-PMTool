@@ -1,16 +1,39 @@
 package com.example.pmtool.domain;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import javax.persistence.*;
+
+@Entity
 public class Backlog {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private Integer PTSequence = 0;
-    private String UUID;
+
+    public String getProjectUUID() {
+        return projectUUID;
+    }
+
+    public void setProjectUUID(String projectUUID) {
+        this.projectUUID = projectUUID;
+    }
+
+    private String projectUUID;
+
+    public Project getProject() {
+        return project;
+    }
+
+    public void setProject(Project project) {
+        this.project = project;
+    }
+
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="project_id",nullable = false)
+    @JsonIgnore
+    private Project project;
 
 
     public Backlog(){}
@@ -32,11 +55,5 @@ public class Backlog {
         this.PTSequence = PTSequence;
     }
 
-    public String getUUID() {
-        return UUID;
-    }
 
-    public void setUUID(String UUID) {
-        this.UUID = UUID;
-    }
 }
