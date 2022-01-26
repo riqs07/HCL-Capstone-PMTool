@@ -1,10 +1,12 @@
 package com.example.pmtool.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.util.Date;
 
-
+@Entity
 public class ProjectTask {
     @Id
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
@@ -25,6 +27,12 @@ public class ProjectTask {
     private Date dueDate;
 
 
+
+    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.REFRESH)
+    @JoinColumn(name = "backlog_id")
+    @JsonIgnore
+    private Backlog backlog;
+
     // MANY TO ONE
     // FOREIGN KEY
     @Column(updatable = false)
@@ -42,6 +50,16 @@ public class ProjectTask {
     @PreUpdate
     protected void onUpdate(){
         this.updated_At = new Date();
+    }
+
+
+
+    public Backlog getBacklog() {
+        return backlog;
+    }
+
+    public void setBacklog(Backlog backlog) {
+        this.backlog = backlog;
     }
 
     public int getId() {

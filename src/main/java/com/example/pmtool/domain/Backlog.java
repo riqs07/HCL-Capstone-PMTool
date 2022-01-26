@@ -3,9 +3,13 @@ package com.example.pmtool.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Backlog {
+
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,6 +26,28 @@ public class Backlog {
 
     private String projectUUID;
 
+
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name="project_id",nullable = false)
+    @JsonIgnore
+    private Project project;
+
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "backlog")
+    private List<ProjectTask> projectTasks = new ArrayList<>();
+
+    public Backlog(){}
+
+
+
+    public List<ProjectTask> getProjectTasks() {
+        return projectTasks;
+    }
+
+    public void setProjectTasks(List<ProjectTask> projectTasks) {
+        this.projectTasks = projectTasks;
+    }
+
     public Project getProject() {
         return project;
     }
@@ -30,13 +56,6 @@ public class Backlog {
         this.project = project;
     }
 
-    @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="project_id",nullable = false)
-    @JsonIgnore
-    private Project project;
-
-
-    public Backlog(){}
 
 
     public int getId() {
