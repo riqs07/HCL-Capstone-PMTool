@@ -4,9 +4,8 @@ export default function Header() {
     return (
         <nav className="navbar navbar-expand-sm navbar-dark bg-slate-700 mb-4 ">
         <div className="container">
-            <a className="navbar-brand" href="Dashboard.html">
-            <i class="fas fa-american-sign-language-interpreting"></i> Helping Hand
-            </a>
+            <a className="navbar-brand" href="/dashboard">
+            <i class="fas fa-house-user"></i>            </a>
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#mobile-nav">
                 <span className="navbar-toggler-icon" />
             </button>
@@ -23,12 +22,11 @@ export default function Header() {
                 <ul className="navbar-nav ml-auto ">
                     <li className="nav-item ">
                         <a className="nav-link " href="register.html">
-                            Sign Up
-                        </a>
+                        <i class="fas fa-user-plus"></i>                        </a>
                     </li>
                     <li className="nav-item">
                         <a className="nav-link" href="login.html">
-                            Login
+                        <i class="fas fa-sign-in-alt"></i>  Login
                         </a>
                     </li>
                 </ul>

@@ -24,15 +24,32 @@ const Dashboard = ({ project,getProjects}) => {
 
     return (
        
-    <div className="projects">
-    <div className="container">
+    <div className="projects container">
         <div className="row">
             <div className="col-md-12">
-            <CreateProjectBtn/>
             
-                <hr />
-                
+<div class = "dashboard container">
+<div class = "px-6 py-4 rounded my-2 bg-slate-700 text-slate-200  ">
+            <h1 class = "pb-1 text-center">Project Dashboard</h1>
 
+                   <CreateProjectBtn/>
+            <button className="bg-blue-500 text-slate-200 font-bold py-2 px-4 rounded m-4 hover:translate-y-1"> View Tasks
+                </button>
+
+                <button className="bg-blue-500 text-slate-200 font-bold py-2 px-4 rounded m-4 hover:translate-y-1"> Total Tasks : 6
+                </button>
+
+      <button className="bg-blue-500 text-slate-200 font-bold py-2 px-4 rounded m-4 hover:translate-y-1"> Total Projects : 3
+                </button>
+
+                <button className="bg-blue-500 text-slate-200 font-bold py-2 px-4 rounded m-4 hover:translate-y-1"> Task Archive
+                </button>
+
+
+
+            </div>
+</div>
+            
                 {projects.map(p => (
                     <ProjectItem key = {p.id} project = {p}/>
                 ))}
@@ -40,7 +57,6 @@ const Dashboard = ({ project,getProjects}) => {
             </div>
             
         </div>
-    </div>
 </div>
 
     )

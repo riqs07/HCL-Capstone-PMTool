@@ -9,30 +9,30 @@ const ProjectItem = ({project,deleteProject}) => {
     const {projectName, projectUUID,description} = project
 
     return (
-                <div className="container ">
-                    <div className="px-6 py-4 rounded my-2 bg-slate-700 text-slate-200">
+                <div className="container  py-1  hover:scale-110 md:w-32 lg:w-48 ">
+                    <div className="px-6 py-4 rounded my-2 bg-slate-700 text-slate-200 hover:text-blue-500">
                         <div className="row ">
-                            <div className="col-2">
-                                <span className="mx-auto text-4xl">{projectUUID}</span>
+                            <div className="col-2 align-middle">
+                                <span className="mx-auto text-4xl text-blue-500">{projectUUID}</span>
                             </div>
-                            <div className="col-lg-6 col-md-4 col-8">
-                                <h3>{projectName}</h3>
-                                <p>{description}</p>
+                            <div className="col-lg-6 col-md-4 col-8 text-center">
+                                <h2 class = "mb-2">{projectName}</h2>
+                                <p class = "text-md" >{description}</p>
                             </div>
                             <div className=" col-md-4 d-none d-lg-block">
                                 <ul className="list-group " >
                                     <a href="#">
-                                        <li className="bg-slate-700 text-slate-200 px-4 m-2 board hover:text-blue-500 ">
-                                            <i className="fa fa-flag-checkered pr-1"> Project Board </i>
+                                        <li className="bg-blue-500 text-slate-200 font-bold py-2 px-4 rounded m-2 hover:translate-y-1 text-center text-lg">
+                                        <i class="fas fa-tasks "> Tasks</i>
                                         </li>
                                     </a>
                                     <Link to= {`/updateProject/${projectUUID}`}>
-                                        <li className="bg-slate-700 text-slate-200 px-4 m-2 hover:text-blue-500 update">
-                                            <i className="fa fa-edit pr-1"> Update Project Info</i>
+                                        <li className="border-4 border-blue-500  text-blue-500 font-bold py-2 px-4 rounded m-2 hover:translate-y-1 text-center text-lg">
+                                            <i className="fa fa-edit pr-1"> Edit</i>
                                         </li>
                                     </Link>
-                                        <li onClick = {() => deleteProject(projectUUID)} className="bg-slate-700 text-slate-200 px-4 m-2 hover:text-blue-500 delete">
-                                            <i className="fa fa-minus-circle pr-1"> Delete Project</i>
+                                        <li onClick = {() => deleteProject(projectUUID)} className=" border-4 border-red-500 text-red-500 font-bold py-2 px-4 rounded m-2 hover:translate-y-1 text-center text-lg">
+                                        <i class="far fa-trash-alt "></i>
                                         </li>
                                 </ul>
                             </div>
