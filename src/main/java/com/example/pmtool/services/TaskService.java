@@ -19,6 +19,9 @@ public class TaskService {
     private TaskRepository taskRepository;
 
 
+
+
+
     public ProjectTask addProjectTask(String projectUUID, ProjectTask projectTask){
 
 
@@ -27,14 +30,17 @@ public class TaskService {
         projectTask.setBacklog(backlog);
 
         Integer SEQUENCE = backlog.getPTSequence();
+        Integer total = backlog.getTaskTotal();
 
         SEQUENCE++;
+        total++;
+
         backlog.setPTSequence(SEQUENCE);
 
         projectTask.setProjectSequence(projectUUID + "-" + SEQUENCE);
         projectTask.setProjectUUID(projectUUID);
 
-
+///OPtionalS????
         if(projectTask.getPriority() == 0 || projectTask.getPriority() == null){
             projectTask.setPriority(3);
         }
@@ -47,5 +53,10 @@ public class TaskService {
 
     };
 
+
+    public Iterable<ProjectTask>findBacklogByUUID (String projectUUID){
+        return taskRepository.findByProjectUUIDOrderByPriority(projectUUID);
+
+    }
 
 }

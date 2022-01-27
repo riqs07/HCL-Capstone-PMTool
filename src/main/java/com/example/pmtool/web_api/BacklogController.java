@@ -12,6 +12,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "*")
@@ -26,14 +27,20 @@ public class BacklogController {
     private ErrorValidationService errorService;
 
 
-    @PostMapping("/{backlog_id}")
-    public ResponseEntity<?> addProjectTaskToBacklog(@Valid @RequestBody ProjectTask projectTask, BindingResult result , @PathVariable String backlog_id){
+    @GetMapping("/{projectUUID}")
+    public Iterable<ProjectTask> getProjectBacklog(@PathVariable String projectUUID){
+
+        return taskService.findBacklogByUUID(projectUUID);
+    }
+
+    @PostMapping("/{projectUUID}")
+    public ResponseEntity<?> addProjectTaskToBacklog(@Valid @RequestBody ProjectTask projectTask, BindingResult result , @PathVariable String projectUUID){
 
         ResponseEntity<?> errorMap = errorService.mapErrors(result);
         if (errorMap != null) return errorMap;
 
 
-        ProjectTask finalizedTask = taskService.addProjectTask(backlog_id,projectTask);
+        ProjectTask finalizedTask = taskService.addProjectTask(projectUUID,projectTask);
 
         return new ResponseEntity<ProjectTask>(finalizedTask, HttpStatus.CREATED);
     }

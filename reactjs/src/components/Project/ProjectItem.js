@@ -16,22 +16,22 @@ const ProjectItem = ({project,deleteProject}) => {
                                 <span className="mx-auto text-4xl text-blue-500">{projectUUID}</span>
                             </div>
                             <div className="col-lg-6 col-md-4 col-8 text-center">
-                                <h2 class = "mb-2">{projectName}</h2>
-                                <p class = "text-md" >{description}</p>
+                                <p class = "mb-4 text-3xl font-bold">{projectName}</p>
+                                <p class = "text-xl" >{description}</p>
                             </div>
                             <div className=" col-md-4 d-none d-lg-block">
                                 <ul className="list-group " >
                                     <a href="#">
-                                        <li className="bg-blue-500 text-slate-200 font-bold py-2 px-4 rounded m-2 hover:translate-y-1 text-center text-lg">
+                                        <li className="bg-blue-500 text-slate-200 py-2 px-4 rounded m-2 hover:translate-y-1 text-center text-lg">
                                         <i class="fas fa-tasks "> Tasks</i>
                                         </li>
                                     </a>
                                     <Link to= {`/updateProject/${projectUUID}`}>
-                                        <li className="border-4 border-blue-500  text-blue-500 font-bold py-2 px-4 rounded m-2 hover:translate-y-1 text-center text-lg">
+                                        <li className="border-4 border-blue-500  text-blue-500 py-2 px-4 rounded m-2 hover:translate-y-1 text-center text-lg">
                                             <i className="fa fa-edit pr-1"> Edit</i>
                                         </li>
                                     </Link>
-                                        <li onClick = {() => deleteProject(projectUUID)} className=" border-4 border-red-500 text-red-500 font-bold py-2 px-4 rounded m-2 hover:translate-y-1 text-center text-lg">
+                                        <li onClick = {() => deleteProject(projectUUID)} className=" border-4 border-red-500 text-red-500 py-2 px-4 rounded m-2 hover:translate-y-1 text-center text-lg">
                                         <i class="far fa-trash-alt "></i>
                                         </li>
                                 </ul>

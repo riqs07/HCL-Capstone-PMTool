@@ -30,7 +30,7 @@ const Dashboard = ({ project,getProjects}) => {
             
 <div class = "dashboard container">
 <div class = "px-6 py-4 rounded my-2 bg-slate-700 text-slate-200  ">
-            <h1 class = "pb-1 text-center">Project Dashboard</h1>
+            <h2 class = "pb-1 text-center">Project Dashboard</h2>
 
                    <CreateProjectBtn/>
             <button className="bg-blue-500 text-slate-200 font-bold py-2 px-4 rounded m-4 hover:translate-y-1"> View Tasks

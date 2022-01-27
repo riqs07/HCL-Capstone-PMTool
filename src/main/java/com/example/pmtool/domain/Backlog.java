@@ -14,7 +14,20 @@ public class Backlog {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+    // LIFETIME TOTAL TASKS
     private Integer PTSequence = 0;
+
+    public Integer getTaskTotal() {
+        return taskTotal;
+    }
+
+    public void setTaskTotal(Integer taskTotal) {
+        this.taskTotal = taskTotal;
+    }
+
+    // CURRENT TOTAL TASKS
+    private Integer taskTotal = 0;
 
     public String getProjectUUID() {
         return projectUUID;
