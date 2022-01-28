@@ -1,6 +1,7 @@
 package com.example.pmtool.web_api;
 
 
+import com.example.pmtool.domain.Project;
 import com.example.pmtool.domain.ProjectTask;
 import com.example.pmtool.services.ErrorValidationService;
 import com.example.pmtool.services.ProjectService;
@@ -46,4 +47,11 @@ public class BacklogController {
     }
 
 
+    @GetMapping("/{projectUUID}/{projectSequence}")
+    public ResponseEntity<?> getProjectTask(@PathVariable String projectUUID,@PathVariable String projectSequence){
+        ProjectTask foundTask = taskService.findTaskByProjectSequence(projectUUID,projectSequence);
+
+
+        return new ResponseEntity<ProjectTask>(foundTask,HttpStatus.OK);
+    }
 }

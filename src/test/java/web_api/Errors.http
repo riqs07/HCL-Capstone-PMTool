@@ -1,0 +1,67 @@
+////// Error Validation
+/// Bad Data // Null Object // Not found
+
+
+/// Mishapen Object
+POST http://localhost:8080/api/project
+Content-Type: application/json
+
+{
+  "projectName": "",
+  "projectUUID": "rayg",
+  "description": "I need to make a project management tool for company"
+}
+
+
+###
+////// Project Does not exist
+GET http://localhost:8080/api/project/FAKE
+
+
+
+
+
+###
+////// Null Task Object
+/// addProjectTaskToBacklog
+
+POST http://localhost:8080/api/backlog/PPM2
+Content-Type: application/json
+
+{
+
+}
+
+###
+////// Mishapen Task Object
+/// addProjectTaskToBacklog
+
+POST http://localhost:8080/api/backlog/PPM2
+Content-Type: application/json
+
+{
+  "summary": "",
+  "priority": "1"
+}
+
+###
+////// Project Does not exist
+/// addProjectTaskToBacklog
+POST http://localhost:8080/api/backlog/PPM22
+Content-Type: application/json
+
+{
+  "summary": "Buy Dog Food",
+  "priority": "1"
+
+}
+
+###
+////// Project Does not exist
+/// getProjectBacklog
+GET http://localhost:8080/api/backlog/FAKE
+
+###
+////// GET TASK BY SEQUENCE ex. PPM2-3
+/// getProjectTask
+GET http://localhost:8080/api/backlog/PPM2/PPM6-3

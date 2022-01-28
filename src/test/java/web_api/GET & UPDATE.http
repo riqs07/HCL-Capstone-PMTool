@@ -1,0 +1,44 @@
+
+
+
+###
+////// UPDATE
+// PUT PROJECT
+PUT http://localhost:8080/api/project
+Content-Type: application/json
+
+{
+  "id":"2",
+  "projectName":"Use AWS to host Project",
+  "projectUUID":"PPM2",
+  "description":"Use AWS to host application servers. React + Spring + mySQL"
+}
+
+
+
+
+###
+////// DELETE
+// DELETE Project
+DELETE http://localhost:8080/api/project/PPM1
+
+###
+////// READ
+/// GET All Projects
+GET http://localhost:8080/api/project/all
+
+
+###
+////// GET Single Project
+GET http://localhost:8080/api/project/PPM2
+
+
+###
+////// GET TASKS ASSOCIATED WITH PROJECT
+GET http://localhost:8080/api/backlog/PPM2
+
+
+###
+////// GET TASK BY SEQUENCE PPM2-3
+GET http://localhost:8080/api/backlog/PPM2/PPM2-3
+

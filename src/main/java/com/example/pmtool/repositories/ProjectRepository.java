@@ -16,6 +16,7 @@ public interface ProjectRepository extends CrudRepository<Project,Integer> {
 
     Project findByProjectUUID(String projectUUID);
 
+    // Count Total Projects
     @Override
     Iterable<Project> findAll();
 

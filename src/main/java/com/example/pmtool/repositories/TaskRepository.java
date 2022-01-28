@@ -13,6 +13,11 @@ public interface TaskRepository extends CrudRepository<ProjectTask,Integer> {
 
     List<ProjectTask> findByProjectUUIDOrderByPriority(String projectUUID);
 
+    ProjectTask findByProjectSequence(String projectSequence);
+
+    /// COUNT TOTAL PROJECT TASK
+
+
 
 
 }
