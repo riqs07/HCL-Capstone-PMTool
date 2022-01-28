@@ -5,6 +5,7 @@ import com.example.pmtool.domain.Project;
 import com.example.pmtool.domain.ProjectTask;
 import com.example.pmtool.domain.Status;
 import com.example.pmtool.exceptions.ProjectNotFoundException;
+import com.example.pmtool.exceptions.ProjectUUIDException;
 import com.example.pmtool.repositories.BacklogRepository;
 import com.example.pmtool.repositories.ProjectRepository;
 import com.example.pmtool.repositories.TaskRepository;
@@ -76,31 +77,36 @@ public class TaskService {
 
     public ProjectTask findTaskByProjectSequence(String projectUUID, String projectSequence) {
 
-        /// OPTIONALS?
 
-//            Optional<Backlog> backlog = Optional.ofNullable(backlogRepository.findByProjectUUID(projectUUID));
+        // check if project exist
+        Optional.ofNullable(backlogRepository.findByProjectUUID(projectUUID))
+                .orElseThrow(() -> new ProjectNotFoundException("Project with ID: " + projectUUID + " does not exist"));
 
-
-        // check if project exists
-        Backlog backlog = backlogRepository.findByProjectUUID(projectUUID);
-        if (backlog == null) {
-            throw new ProjectNotFoundException("Project with ID: " + projectUUID + " does not exist");
-        }
 
         // check if task exist
-        ProjectTask foundTask = taskRepository.findByProjectSequence(projectSequence);
-
-        if (foundTask == null) {
-            throw new ProjectNotFoundException("Project Task: " + projectSequence + " not found");
-        }
+        Optional.ofNullable(taskRepository.findByProjectSequence(projectSequence))
+                .orElseThrow(() -> new ProjectNotFoundException("Project with ID: " + projectSequence + " does not exist"));
 
 
-        if (!foundTask.getProjectUUID().equals(projectUUID)) {
-            throw new ProjectNotFoundException("Project Task " + projectSequence + " does not exist in project:" + projectUUID);
-
-        }
+//        if (!foundTask.getProjectUUID().equals(projectUUID)) {
+//            throw new ProjectNotFoundException("Project Task: " + projectSequence + " not found");
+//
+//        }
         return taskRepository.findByProjectSequence(projectSequence);
 
     }
 
+
+    public ProjectTask updateByProjectSequence(ProjectTask updatedTask, String projectUUID, String projectSequence){
+
+        // Is an optional that will throw exception if it returns null
+        // if not null then fill oldTask Object
+        Optional.ofNullable(taskRepository.findByProjectSequence(projectSequence))
+                .orElseThrow(() -> new ProjectUUIDException("Project UUID: " + projectUUID + " does not exist"));
+
+
+        taskRepository.save(updatedTask);
+        return updatedTask;
+
+    }
 }

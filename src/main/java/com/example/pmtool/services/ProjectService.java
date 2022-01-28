@@ -2,11 +2,14 @@ package com.example.pmtool.services;
 
 import com.example.pmtool.domain.Backlog;
 import com.example.pmtool.domain.Project;
+import com.example.pmtool.exceptions.ProjectNotFoundException;
 import com.example.pmtool.exceptions.ProjectUUIDException;
 import com.example.pmtool.repositories.BacklogRepository;
 import com.example.pmtool.repositories.ProjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 public class ProjectService {
@@ -54,12 +57,9 @@ public class ProjectService {
 
     public Project findProjectByUUID(String projectUUID){
 
-        Project p = projectRepository.findByProjectUUID(projectUUID.toUpperCase());
+        return  Optional.ofNullable(projectRepository.findByProjectUUID(projectUUID))
+                .orElseThrow(() -> new ProjectUUIDException("Project UUID: " + projectUUID + " does not exist"));
 
-        if (p == null){
-            throw new ProjectUUIDException("Project UUID does not exist");
-        }
-        return p;
     }
 
 
@@ -69,12 +69,8 @@ public class ProjectService {
 
     public void deleteProjectbyUUID(String projectUUID){
 
-        Project p = projectRepository.findByProjectUUID(projectUUID.toUpperCase());
-
-        if (p == null){
-            throw new ProjectUUIDException("Can not Delete project " + projectUUID + " it does not exist.");
-
-        }
+        Project p =  Optional.ofNullable(projectRepository.findByProjectUUID(projectUUID))
+                        .orElseThrow(() -> new ProjectUUIDException("Can not Delete project " + projectUUID + ". It does not exist."));
 
         projectRepository.delete(p);
     }

@@ -42,3 +42,20 @@ GET http://localhost:8080/api/backlog/PPM2
 ////// GET TASK BY SEQUENCE PPM2-3
 GET http://localhost:8080/api/backlog/PPM2/PPM2-3
 
+###
+///// UPDATE TASK BY SEQUENCE
+PATCH http://localhost:8080/api/backlog/PPM2/PPM2-3
+Content-Type: application/json
+
+{
+  "id": 3,
+  "projectSequence": "PPM2-3",
+  "summary": "Yo Pierre, this Summary has been dynamiclly Updated",
+  "acceptanceCriteria": null,
+  "status": "TODO",
+  "priority": 1,
+  "dueDate": null,
+  "projectUUID": "PPM2",
+  "created_At": "2022-01-28T00:24:12.000+00:00",
+  "updated_At": null
+}
