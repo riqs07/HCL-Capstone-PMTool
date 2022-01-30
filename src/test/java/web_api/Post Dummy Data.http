@@ -10,12 +10,6 @@ Content-Type: application/json
   "description": "I need to make a project management tool for company"
 }
 
-<> 2022-01-27T161933.201.json
-<> 2022-01-27T161654.201.json
-<> 2022-01-27T161533.201.json
-<> 2022-01-27T161204.201.json
-<> 2022-01-27T160703.201.json
-<> 2022-01-27T145847.201.json
 
 
 
@@ -29,14 +23,6 @@ Content-Type: application/json
   "projectUUID": "PPM2",
   "description": "Find a way to host on cloud."
 }
-
-<> 2022-01-27T161933-1.201.json
-<> 2022-01-27T161654-1.201.json
-<> 2022-01-27T161533-1.201.json
-<> 2022-01-27T161204-1.201.json
-<> 2022-01-27T160703-1.201.json
-<> 2022-01-27T145847-1.201.json
-
 
 
 ###
@@ -66,7 +52,7 @@ Content-Type: application/json
 
 
 ###
-POST http://localhost:8080/api/backlog/PPM2
+POST http://localhost:8080/api/backlog/HELLO
 Content-Type: application/json
 
 {
@@ -76,8 +62,6 @@ Content-Type: application/json
 }
 
 
-
-
 ###
 POST http://localhost:8080/api/backlog/PPM2
 Content-Type: application/json
@@ -85,6 +69,16 @@ Content-Type: application/json
 {
   "summary": "Release Project",
   "priority": "1"
+
+}
+
+###
+POST http://localhost:8080/api/backlog/PPM1
+Content-Type: application/json
+
+{
+"summary": "Release Project",
+"priority": "1"
 
 }
 

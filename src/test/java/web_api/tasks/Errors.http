@@ -1,29 +1,3 @@
-////// Error Validation
-/// Bad Data // Null Object // Not found
-
-
-/// Mishapen Object
-POST http://localhost:8080/api/project
-Content-Type: application/json
-
-{
-  "projectName": "",
-  "projectUUID": "rayg",
-  "description": "I need to make a project management tool for company"
-}
-
-
-###
-////// Project Does not exist
-/// findProjectByUUID
-GET http://localhost:8080/api/project/FAKE
-
-###
-////// Project Does not exist
-/// deleteProject
-DELETE http://localhost:8080/api/project/FAKE
-
-
 
 
 

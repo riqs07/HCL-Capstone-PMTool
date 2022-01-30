@@ -1,7 +1,6 @@
 package com.example.pmtool.services;
 
 import com.example.pmtool.domain.Backlog;
-import com.example.pmtool.domain.Project;
 import com.example.pmtool.domain.ProjectTask;
 import com.example.pmtool.domain.Status;
 import com.example.pmtool.exceptions.ProjectNotFoundException;
@@ -12,6 +11,7 @@ import com.example.pmtool.repositories.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 
@@ -108,5 +108,49 @@ public class TaskService {
         taskRepository.save(updatedTask);
         return updatedTask;
 
+    }
+
+    public void deleteTaskByProjectSequence(String projectUUID, String projectSequence){
+        ProjectTask projectTask = findTaskByProjectSequence(projectUUID,projectSequence);
+
+
+        Backlog backlog = projectTask.getBacklog();
+        List<ProjectTask> pts = backlog.getProjectTasks();
+        pts.remove(projectTask);
+        backlogRepository.save(backlog);
+
+
+        taskRepository.delete(projectTask);
+    }
+
+
+    public int countAllProjectTasks(String projectUUID){
+
+        Optional.ofNullable(projectRepository.findByProjectUUID(projectUUID))
+                .orElseThrow(() -> new ProjectUUIDException("Can not count. Project: " + projectUUID + " does not exist"));
+
+
+        int count = taskRepository.countAllByProjectUUID(projectUUID);
+
+    return count;
+    }
+
+
+    public long sumOfProjectTasks(){
+
+        long count = taskRepository.count();
+
+        return count;
+    }
+
+    public int countAllActiveBacklogTasks(String projectUUID){
+
+        Optional.ofNullable(projectRepository.findByProjectUUID(projectUUID))
+                .orElseThrow(() -> new ProjectUUIDException("Can not count. Project: " + projectUUID + " does not exist"));
+
+//
+//        int count = taskRepository.countAllByProjectUUIDAndStatusDoneNot(projectUUID);
+
+        return 2;
     }
 }

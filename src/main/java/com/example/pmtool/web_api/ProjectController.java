@@ -3,6 +3,7 @@ package com.example.pmtool.web_api;
 import com.example.pmtool.domain.Project;
 import com.example.pmtool.services.ErrorValidationService;
 import com.example.pmtool.services.ProjectService;
+import com.example.pmtool.services.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +20,9 @@ public class ProjectController {
 
     @Autowired
     private ProjectService projectService;
+
+    @Autowired
+    private TaskService taskService;
 
     @Autowired
     private ErrorValidationService errorService;
@@ -71,9 +75,14 @@ public class ProjectController {
     public Iterable<Project> getAllProjects(){return projectService.findAllProjects();}
 
 
+    @GetMapping("/sum")
+    public long getProjectTotal(){return projectService.getProjectTotal();}
+
+
+
     @DeleteMapping("{projectUUID}")
     public ResponseEntity<?> deleteProject(@PathVariable String projectUUID){
-      projectService.deleteProjectbyUUID(projectUUID);
+      projectService.deleteProjectByUUID(projectUUID);
 
       return new ResponseEntity<String>("Project: " + projectUUID + " was deleted!",HttpStatus.OK);
     };

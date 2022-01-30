@@ -1,23 +1,41 @@
-import React,{useEffect} from 'react'
+import React,{useEffect,useState} from 'react'
 import ProjectItem from './Project/ProjectItem'
 import CreateProjectBtn from './Project/CreateProjectBtn'
 import { connect } from "react-redux"
-import { getProjects } from "../repository/projectActions"
+import { getProjects , sumProjectTasks, sumProjects} from "../repository/projectActions"
 import PropTypes from "prop-types"
 
 import { ToastContainer } from 'react-toastify';
 
 
 
-const Dashboard = ({ project,getProjects}) => {
+const Dashboard = ({ project,getProjects,sumProjectTasks,sumProjects}) => {
 
+    const [tasksSum,setTaskSum] = useState(0)
+    const [projectSum,setProjectSum] = useState(0)
 
     /// Empty Array Means it will only run once at mounting
     // == componentWillMount
     useEffect(() => {
         getProjects();
-
+       
         },[])
+
+        useEffect(() => {
+            const fetchData = async () => {
+                const data = await sumProjectTasks();
+                setTaskSum(data)
+
+                const sum = await sumProjects();
+                setProjectSum(sum)
+            }
+    
+            fetchData();           
+            },[])
+    
+    
+
+      
 
 
         const {projects} = project;
@@ -33,18 +51,17 @@ const Dashboard = ({ project,getProjects}) => {
             <h2 class = "pb-1 text-center">Project Dashboard</h2>
 
                    <CreateProjectBtn/>
-            <button className="bg-blue-500 text-slate-200 font-bold py-2 px-4 rounded m-4 hover:translate-y-1"> View Tasks
-                </button>
+           
 
-                <button className="bg-blue-500 text-slate-200 font-bold py-2 px-4 rounded m-4 hover:translate-y-1"> Total Tasks : 6
-                </button>
+                <p className="bg-blue-500 text-slate-200 font-bold py-2 px-4 rounded m-4 inline-block"> Total Tasks: {tasksSum}
+                </p>
 
-      <button className="bg-blue-500 text-slate-200 font-bold py-2 px-4 rounded m-4 hover:translate-y-1"> Total Projects : 3
-                </button>
+      <p className="bg-blue-500 text-slate-200 font-bold py-2 px-4 rounded m-4 inline-block "> Total Projects: {projectSum}
+                </p>
 
-                <button className="bg-blue-500 text-slate-200 font-bold py-2 px-4 rounded m-4 hover:translate-y-1"> Task Archive
-                </button>
 
+
+                
 
 
             </div>
@@ -75,4 +92,4 @@ const mapStateToProps = state => ({
   })
   
 
-export default connect(mapStateToProps,{getProjects})(Dashboard)
+export default connect(mapStateToProps,{getProjects,sumProjectTasks,sumProjects})(Dashboard)

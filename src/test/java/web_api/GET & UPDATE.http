@@ -50,7 +50,7 @@ Content-Type: application/json
 {
   "id": 3,
   "projectSequence": "PPM2-3",
-  "summary": "Yo Pierre, this Summary has been dynamiclly Updated",
+  "summary": "Brro",
   "acceptanceCriteria": null,
   "status": "TODO",
   "priority": 1,
@@ -59,3 +59,8 @@ Content-Type: application/json
   "created_At": "2022-01-28T00:24:12.000+00:00",
   "updated_At": null
 }
+
+###
+///// DELETE TASK BY SEQUENCE
+DELETE http://localhost:8080/api/backlog/PPM2/PPM2-3
+Content-Type: application/json

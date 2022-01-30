@@ -1,0 +1,44 @@
+###
+////// GET TASKS ASSOCIATED WITH PROJECT
+GET http://localhost:8080/api/backlog/PPM2
+
+
+
+###
+////// CREATE NEW TASK
+POST http://localhost:8080/api/backlog/PPM2
+Content-Type: application/json
+
+{
+  "summary": "Release Project",
+  "priority": "1"
+
+}
+
+###
+////// GET TASK BY SEQUENCE PPM2-3
+GET http://localhost:8080/api/backlog/PPM2/PPM2-32
+
+###
+///// UPDATE TASK BY SEQUENCE
+PATCH http://localhost:8080/api/backlog/PPM2/PPM2-32
+Content-Type: application/json
+
+{
+  "id": 3,
+  "projectSequence": "PPM2-30",
+  "summary": "Update has Happend",
+  "acceptanceCriteria": null,
+  "status": "TODO",
+  "priority": 1,
+  "dueDate": null,
+  "projectUUID": "PPM2",
+  "created_At": "2022-01-28T00:24:12.000+00:00",
+  "updated_At": null
+}
+
+
+###
+///// DELETE TASK BY SEQUENCE
+DELETE http://localhost:8080/api/backlog/PPM2/PPM2-32
+Content-Type: application/json

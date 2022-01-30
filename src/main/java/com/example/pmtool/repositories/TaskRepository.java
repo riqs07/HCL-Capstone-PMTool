@@ -15,7 +15,15 @@ public interface TaskRepository extends CrudRepository<ProjectTask,Integer> {
 
     ProjectTask findByProjectSequence(String projectSequence);
 
+
+    // COUNT TOTAL TASKS
+
     /// COUNT TOTAL PROJECT TASK
+    int countAllByProjectUUID(String projectUUID);
+
+
+    // Count Active Tasks on project
+
 
 
 

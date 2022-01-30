@@ -1,8 +1,9 @@
-import {GET_PROJECTS, GET_PROJECT,DELETE_PROJECT} from '../repository/types';
+import {GET_PROJECTS, GET_PROJECT,DELETE_PROJECT,COUNT_PROJECT_TASKS} from '../repository/types';
 
 
 
 const initialState = {
+    tasks:[],
     projects:[],
     project:{}
 };
@@ -28,6 +29,13 @@ export default (state = initialState,action) => {
         return {
             ...state,
             projects:state.projects.filter(project => project.projectUUID !== action.payload)
+        }
+
+
+        case COUNT_PROJECT_TASKS:
+        return {
+            ...state,
+            tasks:action.payload
         }
 
         default:

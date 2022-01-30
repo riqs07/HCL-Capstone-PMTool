@@ -1,12 +1,28 @@
-import React from 'react'
+import React ,{useEffect,useState} from 'react'
 import {Link} from 'react-router-dom'
 import PropTypes from "prop-types"
 import {connect} from "react-redux"
-import {deleteProject} from "../../repository/projectActions"
+import axios from "axios"
 
-const ProjectItem = ({project,deleteProject}) => {
+import {deleteProject,countProjectTasks} from "../../repository/projectActions"
+
+const ProjectItem = ({project,deleteProject,countProjectTasks}) => {
 
     const {projectName, projectUUID,description} = project
+
+
+    const [tasksTotal,setTaskTotal] = useState(0)
+
+    useEffect(() => {
+
+        const fetchData = async () => {
+            const data = await countProjectTasks(projectUUID);
+        setTaskTotal(data)
+        }
+
+        fetchData();
+        
+    }, [])
 
     return (
                 <div className="container  py-1  hover:scale-110 md:w-32 lg:w-48 ">
@@ -16,23 +32,24 @@ const ProjectItem = ({project,deleteProject}) => {
                                 <span className="mx-auto text-4xl text-blue-500">{projectUUID}</span>
                             </div>
                             <div className="col-lg-6 col-md-4 col-8 text-center">
-                                <p class = "mb-4 text-3xl font-bold">{projectName}</p>
+                                <p class = "mb-5 text-4xl font-bold">{projectName}</p>
                                 <p class = "text-xl" >{description}</p>
                             </div>
                             <div className=" col-md-4 d-none d-lg-block">
                                 <ul className="list-group " >
-                                    <a href="#">
-                                        <li className="bg-blue-500 text-slate-200 py-2 px-4 rounded m-2 hover:translate-y-1 text-center text-lg">
-                                        <i class="fas fa-tasks "> Tasks</i>
-                                        </li>
-                                    </a>
-                                    <Link to= {`/updateProject/${projectUUID}`}>
-                                        <li className="border-4 border-blue-500  text-blue-500 py-2 px-4 rounded m-2 hover:translate-y-1 text-center text-lg">
-                                            <i className="fa fa-edit pr-1"> Edit</i>
+                                <li className=" text-slate-200 py-2 px-4 rounded m-2 hover:scale-125 text-center text-2xl">
+                                <i class="fas fa-home"></i>
+                                                                             </li>
+                                        <li className=" text-blue-500 py-2 px-4 rounded m-2 hover:scale-125 text-center text-2xl">
+                                        <i class="fas fa-check-square"></i> {tasksTotal}
+                                                                             </li>
+                                    <Link to= {`/updateProject/${projectUUID}`}> 
+                                        <li className=" text-slate-200 py-2 px-4 rounded m-2 hover:scale-125 text-center text-2xl">
+                                        <i class="fas fa-pen-square"></i> 
                                         </li>
                                     </Link>
-                                        <li onClick = {() => deleteProject(projectUUID)} className=" border-4 border-red-500 text-red-500 py-2 px-4 rounded m-2 hover:translate-y-1 text-center text-lg">
-                                        <i class="far fa-trash-alt "></i>
+                                        <li onClick = {() => deleteProject(projectUUID)} className=" text-red-500 py-2 px-4 rounded m-2 hover:scale-125 text-center text-2xl">
+                                        <i class="far fa-trash-alt "></i> 
                                         </li>
                                 </ul>
                             </div>
@@ -47,4 +64,4 @@ ProjectItem.propTypes = {
     deleteProject:PropTypes.func.isRequired,
   }
 
-export default connect(null,{deleteProject})(ProjectItem)
+export default connect(null,{deleteProject,countProjectTasks})(ProjectItem)
