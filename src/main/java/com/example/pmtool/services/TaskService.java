@@ -42,6 +42,7 @@ public class TaskService {
             total++;
 
             backlog.setPTSequence(SEQUENCE);
+            backlog.setTaskTotal(total);
 
             projectTask.setProjectSequence(projectUUID + "-" + SEQUENCE);
             projectTask.setProjectUUID(projectUUID);

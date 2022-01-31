@@ -5,8 +5,6 @@ import {createProject} from "../../repository/projectActions"
 import { useNavigate } from 'react-router-dom'
 
 
-
-
 const AddProject = ({createProject,errors}) => {
 
   const nav = useNavigate()
