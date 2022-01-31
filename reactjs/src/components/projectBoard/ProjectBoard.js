@@ -1,15 +1,20 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react'
 import PropTypes from 'prop-types';
 import {Link} from "react-router-dom"
 import { useParams } from 'react-router';
 import Backlog from "./Backlog";
+import {connect} from "react-redux"
+import {getBacklog} from "../../repository/backlogActions";
 
-
-const ProjectBoard = ({}) => {
+const ProjectBoard = ({backlog,getBacklog}) => {
 
     const {id} = useParams()
-    console.log(id)
 
+
+    useEffect(() => {
+        getBacklog(id);
+    }, [])
+    // const tasks = backlog.projectTasks;
     return (
         <div className="container">
             <Link to={`/addProjectTask/${id}`}  className="btn btn-primary mb-3">
@@ -25,8 +30,14 @@ const ProjectBoard = ({}) => {
     );
 };
 
-ProjectBoard.propTypes = {
-    
-};
 
-export default ProjectBoard;
+ProjectBoard.propTypes = {
+    backlog: PropTypes.object.isRequired,
+    getBacklog: PropTypes.func.isRequired
+}
+
+const mapStateToProps = state => ({
+    backlog: state.backlog
+})
+
+export default connect(mapStateToProps, {getBacklog}) (ProjectBoard)

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ProjectTask = () => {
+const ProjectTask = ({projectTask}) => {
     return (
         <div className="card mb-1 bg-light">
 
