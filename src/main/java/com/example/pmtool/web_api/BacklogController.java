@@ -54,6 +54,8 @@ public class BacklogController {
     public ResponseEntity<?> addProjectTaskToBacklog(@Valid @RequestBody ProjectTask projectTask, BindingResult result , @PathVariable String projectUUID){
 
         ResponseEntity<?> errorMap = errorService.mapErrors(result);
+        System.out.println(errorMap.toString());
+        System.out.println("yo");
         if (errorMap != null) return errorMap;
 
 

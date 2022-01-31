@@ -20,7 +20,7 @@ const AddProjectTask = ({addProjectTask,errors}) => {
     }
 
     const [formData, setRequestBody] = useState(initState);
-    const [responseErrors, setErrors] = useState({});
+    const [responseErrors, setErrors] = useState();
     const onChange = e => {
         const {name, value} = e.target;
         const updatedForm = {
@@ -31,10 +31,12 @@ const AddProjectTask = ({addProjectTask,errors}) => {
     }
 
     useEffect(() => {
-        if(responseErrors){
-            setErrors(responseErrors)
+        console.log("load erros")
+        if(errors){
+            setErrors(errors)
+            console.log("errors")
         }
-    }, [responseErrors])
+    }, [errors])
 
     const onSubmit = (e) => {
         e.preventDefault();
@@ -58,9 +60,7 @@ const AddProjectTask = ({addProjectTask,errors}) => {
                                placeholder="Project Task summary"
                                value={formData.summary}
                                onChange={onChange}/>
-                        {responseErrors.summary && (
-                            <div className="invalid-feedback">{responseErrors.summary}</div>
-                        )}                    </div>
+                                         </div>
                     <div className="form-group">
                         <textarea className="form-control form-control-lg" placeholder="Acceptance Criteria" name="acceptanceCriteria" value={formData.acceptanceCriteria} onChange={onChange}></textarea>
                     </div>
@@ -105,7 +105,10 @@ const AddProjectTask = ({addProjectTask,errors}) => {
 
 AddProjectTask.propTypes = {
     addProjectTask: PropTypes.func.isRequired,
-    errors: PropTypes.object.isRequired
 
 }
-export default connect(null,{addProjectTask})(AddProjectTask);
+
+const mapStateToProps = state => ({
+    errors:state.errors
+})
+export default connect(mapStateToProps,{addProjectTask})(AddProjectTask);

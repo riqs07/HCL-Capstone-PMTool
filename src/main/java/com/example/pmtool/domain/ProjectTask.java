@@ -15,7 +15,7 @@ public class ProjectTask {
     @Column(updatable = false)
     private String projectSequence;
 
-    @NotBlank(message = "Project name is required")
+    @NotBlank(message = "Task Summary is required")
     private String summary;
 
     private String acceptanceCriteria;

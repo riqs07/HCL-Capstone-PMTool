@@ -1,6 +1,7 @@
 import axios from "axios";
 import {GET_ERRORS} from "./types";
 
+
 export const addProjectTask = (projectUUID,projectTask, nav) => async dispatch => {
 
 
@@ -13,6 +14,7 @@ export const addProjectTask = (projectUUID,projectTask, nav) => async dispatch =
             payload: {}
         })
     } catch (err) {
+        console.log(err.response.data,"hello")
         dispatch({
             type: GET_ERRORS,
             payload: err.response.data
