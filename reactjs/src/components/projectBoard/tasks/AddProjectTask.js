@@ -1,11 +1,11 @@
-import React, {useState} from 'react'
+import React, {useState,useEffect} from 'react'
 import { useParams } from 'react-router';
 import {Link, useNavigate} from "react-router-dom"
 import {connect} from "react-redux";
 import {addProjectTask} from "../../../repository/backlogActions";
 import PropTypes from "prop-types";
 
-const AddProjectTask = ({addProjectTask}) => {
+const AddProjectTask = ({addProjectTask,errors}) => {
 
 
 
@@ -30,6 +30,12 @@ const AddProjectTask = ({addProjectTask}) => {
         setRequestBody(updatedForm);
     }
 
+    useEffect(() => {
+        if(responseErrors){
+            setErrors(responseErrors)
+        }
+    }, [responseErrors])
+
     const onSubmit = (e) => {
         e.preventDefault();
         addProjectTask(id, formData,nav)
@@ -47,8 +53,14 @@ const AddProjectTask = ({addProjectTask}) => {
                 <p className="lead text-center">Project Name + Project Code</p>
                 <form onSubmit={onSubmit}>
                     <div className="form-group">
-                        <input type="text" className="form-control form-control-lg" name="summary" placeholder="Project Task summary" value={formData.summary} onChange={onChange}/>
-                    </div>
+                        <input type="text" className= "form-control form-control-lg"
+                               name="summary"
+                               placeholder="Project Task summary"
+                               value={formData.summary}
+                               onChange={onChange}/>
+                        {responseErrors.summary && (
+                            <div className="invalid-feedback">{responseErrors.summary}</div>
+                        )}                    </div>
                     <div className="form-group">
                         <textarea className="form-control form-control-lg" placeholder="Acceptance Criteria" name="acceptanceCriteria" value={formData.acceptanceCriteria} onChange={onChange}></textarea>
                     </div>
@@ -92,7 +104,8 @@ const AddProjectTask = ({addProjectTask}) => {
 }
 
 AddProjectTask.propTypes = {
-    addPr:PropTypes.func.isRequired,
-    errors:PropTypes.object.isRequired
+    addProjectTask: PropTypes.func.isRequired,
+    errors: PropTypes.object.isRequired
+
 }
 export default connect(null,{addProjectTask})(AddProjectTask);
