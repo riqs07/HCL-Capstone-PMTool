@@ -37,17 +37,29 @@ const ProjectItem = ({project,deleteProject,countProjectTasks}) => {
                             </div>
                             <div className=" col-md-4 d-none d-lg-block">
                                 <ul className="list-group " >
+
+
+                                    <Link to= {`/projectBoard/${projectUUID}`}>
                                 <li className=" text-slate-200 py-2 px-4 rounded m-2 hover:scale-125 text-center text-2xl">
                                 <i class="fas fa-home"></i>
                                                                              </li>
+                                    </Link>
+
+
+                                    <Link to= {`/projectBoard/${projectUUID}`}>
                                         <li className=" text-blue-500 py-2 px-4 rounded m-2 hover:scale-125 text-center text-2xl">
                                         <i class="fas fa-check-square"></i> {tasksTotal}
-                                                                             </li>
+                                        </li>
+                                          </Link>    
+                                          
+                                                                        
                                     <Link to= {`/updateProject/${projectUUID}`}> 
-                                        <li className=" text-slate-200 py-2 px-4 rounded m-2 hover:scale-125 text-center text-2xl">
+                                        <li className=" text-green-500 py-2 px-4 rounded m-2 hover:scale-125 text-center text-2xl">
                                         <i class="fas fa-pen-square"></i> 
                                         </li>
                                     </Link>
+
+
                                         <li onClick = {() => deleteProject(projectUUID)} className=" text-red-500 py-2 px-4 rounded m-2 hover:scale-125 text-center text-2xl">
                                         <i class="far fa-trash-alt "></i> 
                                         </li>

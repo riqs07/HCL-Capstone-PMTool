@@ -8,9 +8,11 @@ import UpdateProject from './components/Project/UpdateProject'
 import "bootstrap/dist/css/bootstrap.min.css"
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-
 import { Provider } from "react-redux"
 import store from "./store"
+import AddProjectTask from './components/projectBoard/tasks/AddProjectTask';
+import ProjectBoard from './components/projectBoard/ProjectBoard'
+
 
 function App() {
 
@@ -29,6 +31,9 @@ function App() {
               <Route  path="/dashboard" element={<Dashboard />} />
               <Route  path="/addProject" element={<AddProject />} />
               <Route path="/updateProject/:id" element={<UpdateProject />} />
+                <Route exact path="/projectBoard/:id" element={<ProjectBoard/>} />
+                
+                <Route exact path = "/addProjectTask/:id" element = {<AddProjectTask/>}/>
 
             </Routes>
 

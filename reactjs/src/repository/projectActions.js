@@ -6,7 +6,7 @@ import { COUNT } from "arg";
 /// POST PROJECT 
 export const createProject = (project, nav) => async dispatch => {
     try {
-        const res = await axios.post("/api/project", project)
+        await axios.post("/api/project", project)
         nav("/dashboard")
      
     } catch (err) {
