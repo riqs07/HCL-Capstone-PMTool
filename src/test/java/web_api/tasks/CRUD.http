@@ -11,7 +11,8 @@ Content-Type: application/json
 
 {
   "summary": "Release Project",
-  "priority": "1"
+  "priority": "1",
+  "status":
 
 }
 
@@ -21,12 +22,12 @@ GET http://localhost:8080/api/backlog/PPM2/PPM2-32
 
 ###
 ///// UPDATE TASK BY SEQUENCE
-PATCH http://localhost:8080/api/backlog/PPM2/PPM2-32
+PATCH http://localhost:8080/api/backlog/PPM2/PPM2-6
 Content-Type: application/json
 
 {
   "id": 3,
-  "projectSequence": "PPM2-30",
+  "projectSequence": "PPM2-6",
   "summary": "Update has Happend",
   "acceptanceCriteria": null,
   "status": "TODO",

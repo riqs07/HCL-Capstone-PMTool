@@ -53,7 +53,7 @@ public class TaskService {
             }
 
             if (projectTask.getStatus() == null) {
-                projectTask.setStatus(Status.TODO);
+                projectTask.setStatus("TODO");
             }
 
             return taskRepository.save(projectTask);

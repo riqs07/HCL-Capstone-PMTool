@@ -17,7 +17,6 @@ const ProjectBoard = ({backlog,getBacklog}) => {
 
     const taskList = Array.from(backlog.project_tasks);
 
-    console.log(taskList)
 
 
     return (

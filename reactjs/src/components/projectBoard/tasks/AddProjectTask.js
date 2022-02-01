@@ -68,16 +68,9 @@ const AddProjectTask = ({addProjectTask,errors}) => {
                     <div className="form-group">
                         <input type="date" className="form-control form-control-lg" name="dueDate" value={formData.dueDate} onChange={onChange}/>
                     </div>
-                    <div className="form-group">
-                        <select className="form-control form-control-lg" name="status" value={formData.status} onChange={onChange}>
 
-                            <option value={0}>Select Priority</option>
-                            <option value={1}>High</option>
-                            <option value={2}>Medium</option>
-                            </select>
-                    </div>
                     <div className="form-group">
-                        <select className="form-control form-control-lg" name="priority">
+                        <select className="form-control form-control-lg" name="priority" value={formData.priority} onChange={onChange} >
                             <option value={0}>Select Priority</option>
                             <option value={1}>High</option>
                             <option value={2}>Medium</option>
@@ -86,11 +79,11 @@ const AddProjectTask = ({addProjectTask,errors}) => {
                     </div>
 
                     <div className="form-group">
-                        <select className="form-control form-control-lg" name="status">
+                        <select className="form-control form-control-lg" name="status" value={formData.status} onChange={onChange} >
                             <option value="">Select Status</option>
-                            <option value="TO_DO">TO DO</option>
-                            <option value="IN_PROGRESS">IN PROGRESS</option>
-                            <option value="DONE">DONE</option>
+                            <option value="1">TO DO</option>
+                            <option value="1">ACTIVE</option>
+                            <option value="2">DONE</option>
                         </select>
                     </div>
 

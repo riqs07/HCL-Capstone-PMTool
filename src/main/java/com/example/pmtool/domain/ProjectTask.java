@@ -20,7 +20,7 @@ public class ProjectTask {
 
     private String acceptanceCriteria;
 
-    private Status status;
+    private String status;
 
     private Integer priority;
 
@@ -94,11 +94,11 @@ public class ProjectTask {
         this.acceptanceCriteria = acceptanceCriteria;
     }
 
-    public Status getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(Status status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 
