@@ -14,7 +14,12 @@ const ProjectBoard = ({backlog,getBacklog}) => {
     useEffect(() => {
         getBacklog(id);
     }, [])
-    // const tasks = backlog.projectTasks;
+
+    const taskList = Array.from(backlog.project_tasks);
+
+    console.log(taskList)
+
+
     return (
         <div className="container">
             <Link to={`/addProjectTask/${id}`}  className="btn btn-primary mb-3">
@@ -23,7 +28,7 @@ const ProjectBoard = ({backlog,getBacklog}) => {
     <br />
     <hr />
 
-            <Backlog/>
+            <Backlog projectTasks = {taskList}/>
 
 </div>
 
