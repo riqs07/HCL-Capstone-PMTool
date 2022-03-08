@@ -26,6 +26,7 @@ const ProjectItem = ({project,deleteProject,countProjectTasks}) => {
 
     return (
                 <div className="container  py-1  hover:scale-110 md:w-32 lg:w-48 ">
+                <Link style={{ textDecoration: 'none' }} to= {`/projectBoard/${projectUUID}`}>
                     <div className="px-6 py-4 rounded my-2 bg-slate-700 text-slate-200 hover:text-blue-500">
                         <div className="row ">
                             <div className="col-2 align-middle">
@@ -36,37 +37,32 @@ const ProjectItem = ({project,deleteProject,countProjectTasks}) => {
                                 <p class = "text-xl" >{description}</p>
                             </div>
                             <div className=" col-md-4 d-none d-lg-block">
-                                <ul className="list-group " >
+                                <ul className="" >
 
+                                <div className = "flex">
 
-                                    <Link to= {`/projectBoard/${projectUUID}`}>
-                                <li className=" text-slate-200 py-2 px-4 rounded m-2 hover:scale-125 text-center text-2xl">
-                                <i class="fas fa-home"></i>
-                                                                             </li>
-                                    </Link>
-
-
-                                    <Link to= {`/projectBoard/${projectUUID}`}>
-                                        <li className=" text-blue-500 py-2 px-4 rounded m-2 hover:scale-125 text-center text-2xl">
+                            <li className=" text-blue-500 py-2 px-3 m-1 rounded hover:scale-125 text-center text-2xl">
                                         <i class="fas fa-check-square"></i> {tasksTotal}
-                                        </li>
-                                          </Link>    
-                                          
+                                        </li>  
+                                         
+
                                                                         
-                                    <Link to= {`/updateProject/${projectUUID}`}> 
-                                        <li className=" text-green-500 py-2 px-4 rounded m-2 hover:scale-125 text-center text-2xl">
+                                    <Link  to= {`/updateProject/${projectUUID}`}> 
+                                        <li className=" text-green-500 py-2 px-3 m-1 rounded hover:scale-125 text-center text-2xl">
                                         <i class="fas fa-pen-square"></i> 
                                         </li>
                                     </Link>
 
 
-                                        <li onClick = {() => deleteProject(projectUUID)} className=" text-red-500 py-2 px-4 rounded m-2 hover:scale-125 text-center text-2xl">
+                                        <li onClick = {() => deleteProject(projectUUID)} className=" text-red-500 py-2 px-3 m-1 rounded hover:scale-125 text-center text-2xl">
                                         <i class="far fa-trash-alt "></i> 
                                         </li>
+                                </div>
                                 </ul>
                             </div>
                         </div>
                     </div>
+                    </Link>   
                 </div>
     )
 }

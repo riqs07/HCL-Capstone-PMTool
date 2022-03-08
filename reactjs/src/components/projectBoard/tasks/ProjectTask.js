@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Link} from "react-router-dom";
 
 const ProjectTask = ({projectTask}) => {
@@ -9,39 +9,76 @@ const ProjectTask = ({projectTask}) => {
     let priorityClass;
 
     if (projectTask.priority === 1) {
-        priorityClass = "bg-danger text-light";
+        priorityClass = "bg-yellow-800 ";
         priorityString = "HIGH";
     }
 
     if (projectTask.priority === 2) {
-        priorityClass = "bg-warning text-light";
+        priorityClass = "bg-emerald-800";
         priorityString = "MEDIUM";
     }
 
     if (projectTask.priority === 3) {
-        priorityClass = "bg-info text-light";
+        priorityClass = "bg-sky-800";
         priorityString = "LOW";
     }
 
 
+    const [formData, setRequestBody] = useState();
+
+    const [hover,setHover] = useState(false);
+
+
+    const handleHover = () => {
+        if (hover){
+            setHover(false)
+        } else {
+            setHover(true)
+        }
+
+    }
+
     return (
-        <div className="card mb-1 bg-light">
+        <div onMouseOver = {()=>setHover(true)} onMouseLeave = {()=>setHover(false)} className={`rounded m-2 px-1 ${priorityClass}  text-slate-200 hover:scale-125`}>
 
-            <div className={`card-header text-primary ${priorityClass}`}>
-                ID: {projectSequence} -- Priority: {priorityString}
+            <div className={` ${priorityClass} rounded-t text-lg font-bold px-3 py-2`}>
+
+            {hover && 
+            priorityString +'    ' + 
+            projectSequence 
+        }
+            
+   
+                
             </div>
-            <div className="card-body bg-light">
-                <h5 className="card-title">{summary}</h5>
+            <div className="card-body flex ">
+            <div className= "carrdbody">
+                <h4 >{summary}</h4>
                 <p className="card-text text-truncate ">
-                    {acceptanceCriteria}
+                  {acceptanceCriteria}
                 </p>
-                <Link to ={"#"} className="btn btn-primary">
-                    View / Update
-                </Link>
+            </div>
 
-                <button className="btn btn-danger ml-4">
-                    Delete
-                </button>
+{hover &&
+    <div class = "action-buttons justify-items-end p-3 rounded">
+    <Link to ={"#"} className="text-slate-200 text-2xl mx-2">
+                            <i class="fas fa-pen-square"></i> 
+    </Link>
+
+    <button className="  text-slate-200  text-2xl  mx-2">
+    <i class="fas fa-calendar-times"></i>                    </button>
+
+
+    <button className=" text-slate-200  text-2xl  mx-2">
+    <i class="fas fa-calendar-check"></i>                    </button>
+
+    
+    </div>
+}
+              
+
+
+
             </div>
         </div>
     );

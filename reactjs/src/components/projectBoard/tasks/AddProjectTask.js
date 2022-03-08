@@ -1,6 +1,15 @@
+
+
+
 import React, {useState,useEffect} from 'react'
 import { useParams } from 'react-router';
 import {Link, useNavigate} from "react-router-dom"
+
+
+
+
+
+
 import {connect} from "react-redux";
 import {addProjectTask} from "../../../repository/backlogActions";
 import PropTypes from "prop-types";
@@ -11,6 +20,9 @@ const AddProjectTask = ({addProjectTask,errors}) => {
 
     const nav = useNavigate()
     const {id} = useParams()
+
+
+
     const initState = {
         summary: "",
         acceptanceCriteria: "",
@@ -20,7 +32,12 @@ const AddProjectTask = ({addProjectTask,errors}) => {
     }
 
     const [formData, setRequestBody] = useState(initState);
+
+
     const [responseErrors, setErrors] = useState();
+
+
+
     const onChange = e => {
         const {name, value} = e.target;
         const updatedForm = {
@@ -81,7 +98,7 @@ const AddProjectTask = ({addProjectTask,errors}) => {
                     <div className="form-group">
                         <select className="form-control form-control-lg" name="status" value={formData.status} onChange={onChange} >
                             <option value="">Select Status</option>
-                            <option value="1">TO DO</option>
+                            <option value="0">TO DO</option>
                             <option value="1">ACTIVE</option>
                             <option value="2">DONE</option>
                         </select>

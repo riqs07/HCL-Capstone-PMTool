@@ -68,7 +68,6 @@ public class BacklogController {
     public ResponseEntity<?> getProjectTask(@PathVariable String projectUUID,@PathVariable String projectSequence){
         ProjectTask foundTask = taskService.findTaskByProjectSequence(projectUUID,projectSequence);
 
-
         return new ResponseEntity<ProjectTask>(foundTask,HttpStatus.OK);
     }
 
