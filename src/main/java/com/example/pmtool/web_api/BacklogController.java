@@ -11,6 +11,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.sql.Date;
+import java.sql.Timestamp;
 
 @RestController
 @CrossOrigin(origins = "*")
@@ -68,8 +70,18 @@ public class BacklogController {
     public ResponseEntity<?> getProjectTask(@PathVariable String projectUUID,@PathVariable String projectSequence){
         ProjectTask foundTask = taskService.findTaskByProjectSequence(projectUUID,projectSequence);
 
+//        System.out.println(foundTask.getDueDate());
+
+//        Timestamp ts =new Timestamp(System.currentTimeMillis());
+//        Date date=new Date(ts.getTime());
+//        System.out.println(date);
+//
+
+
         return new ResponseEntity<ProjectTask>(foundTask,HttpStatus.OK);
     }
+
+
 
 
     @PatchMapping("/{projectUUID}/{projectSequence}")

@@ -48,10 +48,8 @@ const AddProjectTask = ({addProjectTask,errors}) => {
     }
 
     useEffect(() => {
-        console.log("load erros")
         if(errors){
             setErrors(errors)
-            console.log("errors")
         }
     }, [errors])
 

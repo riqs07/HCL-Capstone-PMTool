@@ -1,9 +1,13 @@
 import React, {useState} from 'react';
 import {Link} from "react-router-dom";
+import {deleteProjectTask} from "../../../repository/backlogActions";
+import PropTypes from "prop-types";
+import {connect} from "react-redux";
 
-const ProjectTask = ({projectTask}) => {
+const ProjectTask = ({projectTask,deleteProjectTask}) => {
 
-    const {projectSequence, priority, summary, acceptanceCriteria} = projectTask;
+    const {projectSequence, priority, summary, acceptanceCriteria,projectUUID} = projectTask;
+
 
     let priorityString;
     let priorityClass;
@@ -38,6 +42,11 @@ const ProjectTask = ({projectTask}) => {
 
     }
 
+
+    const onDelete=(projectUUID, projectSequence)=>{
+        deleteProjectTask(projectUUID, projectSequence);
+    }
+
     return (
         <div onMouseOver = {()=>setHover(true)} onMouseLeave = {()=>setHover(false)} className={`rounded m-2 px-1 ${priorityClass}  text-slate-200 hover:scale-125`}>
 
@@ -59,13 +68,16 @@ const ProjectTask = ({projectTask}) => {
                 </p>
             </div>
 
+
+
+
 {hover &&
     <div class = "action-buttons justify-items-end p-3 rounded">
-    <Link to ={"#"} className="text-slate-200 text-2xl mx-2">
+    <Link to ={`/updateTask/${projectUUID}/${projectSequence}`} className="text-slate-200 text-2xl mx-2">
                             <i class="fas fa-pen-square"></i> 
     </Link>
 
-    <button className="  text-slate-200  text-2xl  mx-2">
+    <button className="text-slate-200  text-2xl  mx-2" onClick={() => onDelete(projectUUID,projectSequence)}>
     <i class="fas fa-calendar-times"></i>                    </button>
 
 
@@ -77,11 +89,9 @@ const ProjectTask = ({projectTask}) => {
 }
               
 
-
-
             </div>
         </div>
     );
 };
 
-export default ProjectTask;
+export default connect(null,{deleteProjectTask})(ProjectTask)

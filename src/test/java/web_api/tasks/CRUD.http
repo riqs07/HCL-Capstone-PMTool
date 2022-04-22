@@ -18,7 +18,7 @@ Content-Type: application/json
 
 ###
 ////// GET TASK BY SEQUENCE PPM2-3
-GET http://localhost:8080/api/backlog/PPM2/PPM2-32
+GET http://localhost:8080/api/backlog/FEB1/FEB1-5
 
 ###
 ///// UPDATE TASK BY SEQUENCE

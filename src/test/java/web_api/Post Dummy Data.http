@@ -5,8 +5,8 @@ POST http://localhost:8080/api/project
 Content-Type: application/json
 
 {
-  "projectName": "Make PPM Tool",
-  "projectUUID": "PPM1",
+  "projectName": "Make zPPM Tool",
+  "projectUUID": "PPM12",
   "description": "I need to make a project management tool for company"
 }
 
